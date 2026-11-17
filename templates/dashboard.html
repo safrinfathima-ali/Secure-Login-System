@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard - Secure Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>Dashboard</h1>
+            <h2>Welcome, {{ username }}!</h2>
+
+            <p>You have successfully logged into your secure account.</p>
+
+            <div class="security">
+                <h3>Account Security</h3>
+                <p>✓ Password hashing enabled</p>
+                <p>✓ Session authentication active</p>
+                <p>✓ CSRF protection enabled</p>
+                <p>✓ Input validation enabled</p>
+            </div>
+
+            <form method="POST" action="{{ url_for('logout') }}">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <button type="submit" class="logout">Logout</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
